@@ -13,7 +13,11 @@
     </ion-toolbar>
   </ion-header>
 
-  <div *ngFor="let device of devices">
+  <div
+    *ngFor="let device of devices"
+    class="device"
+    (click)="openDeviceSettings(device.id)"
+  >
     {{ device.name }}
   </div>
 </ion-content>

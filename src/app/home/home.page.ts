@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
 
 @Component({
@@ -9,7 +10,10 @@ import { Apollo, gql } from 'apollo-angular';
 export class HomePage implements OnInit {
   devices: [];
 
-  constructor(private apollo: Apollo) {}
+  constructor(
+    private apollo: Apollo,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.apollo.watchQuery({
@@ -28,4 +32,7 @@ export class HomePage implements OnInit {
     });
   }
 
+  openDeviceSettings(id: number) {
+    this.router.navigate(['device-settings', id])
+  }
 }
